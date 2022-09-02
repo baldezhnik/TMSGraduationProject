@@ -5,7 +5,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.dsd.tmsgraduationproject.classes.Operation
 
-@Entity (tableName = "operation_table")
+@Entity (tableName = "operation_table"
+)
  data class OperationEntity(
     @PrimaryKey(autoGenerate = true) val id: Long,
     var name: String,

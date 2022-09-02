@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/tv_edit_name"
+        android:id="@+id/tv_edit_name_wallet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="@dimen/min_height"
@@ -15,28 +15,18 @@
         android:layout_margin="@dimen/big_padding"
         android:textSize="18sp" />
     <EditText
-        android:id="@+id/tv_edit_sum"
+        android:id="@+id/tv_edit_sum_wallet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="@dimen/min_height"
         android:fontFamily="sans-serif-light"
         android:hint="@string/sum"
-        android:inputType="numberDecimal"
-        android:layout_margin="@dimen/big_padding"
-        android:textSize="18sp" />
-    <EditText
-        android:id="@+id/tv_edit_type_id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="@dimen/min_height"
-        android:fontFamily="sans-serif-light"
-        android:hint="type_id"
         android:inputType="number"
         android:layout_margin="@dimen/big_padding"
         android:textSize="18sp" />
 
     <Button
-        android:id="@+id/button_save"
+        android:id="@+id/btn_save_wallet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
