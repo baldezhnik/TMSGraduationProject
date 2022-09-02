@@ -6,6 +6,9 @@
     <string name="add_word">Add word</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="fragment_operation"> Операции</string>
+    <string name="fragment_wallet"> Кошельки</string>
+
     <string name="top_wallet"> Ваши кошельки</string>
     <string name="top_operation"> Ваши операции с кошельками</string>
     <string name="add_wallet"> Добавить кошелек</string>

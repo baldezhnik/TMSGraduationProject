@@ -23,9 +23,4 @@ interface OperationDao {
     @Query("DELETE FROM operation_table")
     suspend fun deleteAllOperations()
 
-    @Query("SELECT * FROM wallet_table ORDER BY id")
-    fun getAllWallets(): Flow<MutableList<WalletEntity>>
-
-    @Insert
-    suspend fun insertWallet(walletEntity: WalletEntity)
 }
