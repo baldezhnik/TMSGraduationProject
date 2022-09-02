@@ -2,16 +2,25 @@ package com.dsd.tmsgraduationproject.room
 
 import androidx.annotation.WorkerThread
 import com.dsd.tmsgraduationproject.room.entities.OperationEntity
+import com.dsd.tmsgraduationproject.room.entities.WalletEntity
 import kotlinx.coroutines.flow.Flow
 
 class Repositories(private val operationDao: OperationDao) {
 
     val allOperations: Flow<List<OperationEntity>> = operationDao.getAllOperations()
+    val allWallets: Flow<List<WalletEntity>> = operationDao.getAllWallets()
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    suspend fun insert(operationEntity: OperationEntity) {
+    suspend fun insertOperation(operationEntity: OperationEntity) {
         operationDao.insertOperation(operationEntity)
     }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun insertWallet(walletEntity: WalletEntity) {
+        operationDao.insertWallet(walletEntity)
+    }
+
 
 }

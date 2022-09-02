@@ -1,17 +1,14 @@
 package com.dsd.tmsgraduationproject.fragments
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.runtime.snapshots.Snapshot.Companion.observe
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dsd.tmsgraduationproject.R
-import com.dsd.tmsgraduationproject.classes.Operation
 import com.dsd.tmsgraduationproject.databinding.FragmentOperationBinding
 import com.dsd.tmsgraduationproject.recycleview.operation.OperationListAdapter
 import com.dsd.tmsgraduationproject.room.OperationsApplication

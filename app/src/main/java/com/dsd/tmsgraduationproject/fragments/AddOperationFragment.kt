@@ -1,22 +1,16 @@
 package com.dsd.tmsgraduationproject.fragments
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.Toast
-import androidx.compose.ui.text.android.animation.SegmentType
-import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.dsd.tmsgraduationproject.R
 import com.dsd.tmsgraduationproject.databinding.FragmentAddOperationBinding
-import com.dsd.tmsgraduationproject.databinding.FragmentOperationBinding
 import com.dsd.tmsgraduationproject.room.OperationsApplication
 import com.dsd.tmsgraduationproject.room.RoomViewModel
 import com.dsd.tmsgraduationproject.room.RoomViewModelFactory
@@ -55,7 +49,7 @@ class AddOperationFragment : Fragment() {
                     binding.tvEditSum.text.toString().toFloat(),
                     binding.tvEditTypeId.text.toString().toInt())
                 operationEntity.let { reply ->
-                    roomViewModel.insert(reply)
+                    roomViewModel.insertOperation(reply)
                 }
                 findNavController().navigate(R.id.action_addOperationFragment_to_operationFragment)
 

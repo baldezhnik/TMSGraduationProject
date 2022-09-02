@@ -2,14 +2,20 @@ package com.dsd.tmsgraduationproject.room
 
 import androidx.lifecycle.*
 import com.dsd.tmsgraduationproject.room.entities.OperationEntity
+import com.dsd.tmsgraduationproject.room.entities.WalletEntity
 import kotlinx.coroutines.launch
 
 class RoomViewModel(private val repository: Repositories) : ViewModel()  {
 
     val allOperations: LiveData<List<OperationEntity>> = repository.allOperations.asLiveData()
+    val allWallets: LiveData<List<WalletEntity>> = repository.allWallets.asLiveData()
 
-    fun insert(operationEntity: OperationEntity) = viewModelScope.launch {
-        repository.insert(operationEntity)
+    fun insertOperation(operationEntity: OperationEntity) = viewModelScope.launch {
+        repository.insertOperation(operationEntity)
+    }
+
+    fun insertWallet(walletEntity: WalletEntity) = viewModelScope.launch {
+        repository.insertWallet(walletEntity)
     }
 }
 
