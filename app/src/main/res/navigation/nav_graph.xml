@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/operationFragment">
+
+    <fragment
+        android:id="@+id/operationFragment"
+        android:name="com.dsd.tmsgraduationproject.fragments.OperationFragment"
+        android:label="fragment_operation"
+        tools:layout="@layout/fragment_operation" >
+        <action
+            android:id="@+id/action_operationFragment_to_addOperationFragment"
+            app:destination="@id/addOperationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addOperationFragment"
+        android:name="com.dsd.tmsgraduationproject.fragments.AddOperationFragment"
+        android:label="AddOperationFragment" >
+        <action
+            android:id="@+id/action_addOperationFragment_to_operationFragment"
+            app:destination="@id/operationFragment" />
+    </fragment>
+</navigation>
