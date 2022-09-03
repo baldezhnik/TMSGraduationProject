@@ -22,7 +22,8 @@ class MainActivity : AppCompatActivity() {
 
         val appBarConfiguration = AppBarConfiguration(setOf(
             R.id.wallet_fragment,
-            R.id.operation_fragment
+            R.id.operation_fragment,
+            R.id.exchange_fragment
         ))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navBottom.setupWithNavController(navController)

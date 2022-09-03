@@ -39,4 +39,8 @@
             android:id="@+id/action_addWalletFragment_to_walletFragment"
             app:destination="@id/wallet_fragment" />
     </fragment>
+    <fragment
+        android:id="@+id/exchange_fragment"
+        android:name="com.dsd.tmsgraduationproject.fragments.ExchangeFragment"
+        android:label="@string/fragment_exchange" />
 </navigation>

@@ -9,6 +9,7 @@
 
     <string name="fragment_operation"> Операции</string>
     <string name="fragment_wallet"> Кошельки</string>
+    <string name="fragment_exchange"> Курсы</string>
 
     <string name="top_wallet"> Ваши кошельки</string>
     <string name="top_operation"> Ваши операции с кошельками</string>

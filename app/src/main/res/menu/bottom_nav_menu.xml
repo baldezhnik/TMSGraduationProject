@@ -5,10 +5,11 @@
 
     <item
         android:id="@+id/wallet_fragment"
-
         android:title="@string/fragment_wallet"/>
     <item
         android:id="@+id/operation_fragment"
-
         android:title="@string/fragment_operation" />
+    <item
+        android:id="@+id/exchange_fragment"
+        android:title="@string/fragment_exchange" />
 </menu>

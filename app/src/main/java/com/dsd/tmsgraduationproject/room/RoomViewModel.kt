@@ -18,8 +18,9 @@ class RoomViewModel(private val repository: Repositories) : ViewModel()  {
         repository.insertWallet(walletEntity)
     }
 
-    fun checkWallet(id: Int):Boolean =
-        repository.checkWallet(id)
+    fun checkWallet(id: Int):Boolean {
+       return repository.checkWallet(id)
+    }
 
 }
 

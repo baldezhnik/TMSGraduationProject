@@ -4,7 +4,6 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
-import com.dsd.tmsgraduationproject.classes.Operation
 
 @Entity (
     tableName = "operation_table",
