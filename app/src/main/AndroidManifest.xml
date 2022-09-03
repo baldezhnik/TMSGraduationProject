@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.dsd.tmsgraduationproject">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".room.OperationsApplication"
         android:allowBackup="true"

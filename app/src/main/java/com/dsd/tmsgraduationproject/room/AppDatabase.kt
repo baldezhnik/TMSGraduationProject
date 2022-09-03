@@ -7,13 +7,15 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.dsd.tmsgraduationproject.room.entities.OperationEntity
+import com.dsd.tmsgraduationproject.room.entities.WalletEntity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @Database(
     version = 1,
     entities = [
-        OperationEntity::class
+        OperationEntity::class,
+        WalletEntity::class
     ],
     exportSchema = false)
 abstract class AppDatabase: RoomDatabase() {
@@ -32,6 +34,7 @@ abstract class AppDatabase: RoomDatabase() {
 
                     // Delete all content here.
                     operationDao.deleteAllOperations()
+                    operationDao.deleteAllWallets()
 
 //                    // Add sample words.
 //                    var word = SegmentType.Word("Hello")

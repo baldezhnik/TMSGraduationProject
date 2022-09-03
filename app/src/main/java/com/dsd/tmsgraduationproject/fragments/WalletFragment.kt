@@ -10,40 +10,43 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dsd.tmsgraduationproject.R
 import com.dsd.tmsgraduationproject.databinding.FragmentOperationBinding
+import com.dsd.tmsgraduationproject.databinding.FragmentWalletBinding
 import com.dsd.tmsgraduationproject.recycleview.operation.OperationListAdapter
+import com.dsd.tmsgraduationproject.recycleview.operation.WalletListAdapter
 import com.dsd.tmsgraduationproject.room.OperationsApplication
 import com.dsd.tmsgraduationproject.room.RoomViewModel
 import com.dsd.tmsgraduationproject.room.RoomViewModelFactory
 
-class OperationFragment : Fragment() {
+class WalletFragment : Fragment() {
+
     private val roomViewModel: RoomViewModel by viewModels {
         RoomViewModelFactory((activity?.application as OperationsApplication).repository)
     }
 
-    private var _binding: FragmentOperationBinding? = null
+    private var _binding: FragmentWalletBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentOperationBinding.inflate(inflater, container, false)
+        _binding = FragmentWalletBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = OperationListAdapter()
-        binding.rvOperationList.adapter = adapter
-        binding.rvOperationList.layoutManager = LinearLayoutManager(context)
+        val adapter = WalletListAdapter()
+        binding.rvWalletList.adapter = adapter
+        binding.rvWalletList.layoutManager = LinearLayoutManager(context)
 
-        binding.fab.setOnClickListener {
-            findNavController().navigate(R.id.action_operationFragment_to_addOperationFragment)
+        binding.btnFab.setOnClickListener {
+            findNavController().navigate(R.id.action_walletFragment_to_addWalletFragment)
         }
 
-        roomViewModel.allOperations.observe(viewLifecycleOwner) { operations ->
-            operations.let { adapter.submitList(it) }
+        roomViewModel.allWallets.observe(viewLifecycleOwner) { wallets ->
+            wallets.let { adapter.submitList(it) }
         }
     }
 

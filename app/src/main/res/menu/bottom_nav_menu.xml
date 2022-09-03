@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/wallet_fragment"
+        android:title="@string/fragment_wallet"/>
+    <item
+        android:id="@+id/operation_fragment"
+        android:title="@string/fragment_operation" />
+    <item
+        android:id="@+id/exchange_fragment"
+        android:title="@string/fragment_exchange" />
+</menu>

@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/operationFragment">
+    app:startDestination="@id/wallet_fragment">
 
     <fragment
-        android:id="@+id/operationFragment"
+        android:id="@+id/operation_fragment"
         android:name="com.dsd.tmsgraduationproject.fragments.OperationFragment"
-        android:label="fragment_operation"
+        android:label="@string/fragment_operation"
         tools:layout="@layout/fragment_operation" >
         <action
             android:id="@+id/action_operationFragment_to_addOperationFragment"
@@ -20,6 +20,27 @@
         android:label="AddOperationFragment" >
         <action
             android:id="@+id/action_addOperationFragment_to_operationFragment"
-            app:destination="@id/operationFragment" />
+            app:destination="@id/operation_fragment" />
     </fragment>
+    <fragment
+        android:id="@+id/wallet_fragment"
+        android:name="com.dsd.tmsgraduationproject.fragments.WalletFragment"
+        android:label="@string/fragment_wallet"
+        tools:layout="@layout/fragment_wallet" >
+        <action
+            android:id="@+id/action_walletFragment_to_addWalletFragment"
+            app:destination="@id/addWalletFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addWalletFragment"
+        android:name="com.dsd.tmsgraduationproject.fragments.AddWalletFragment"
+        android:label="AddWalletFragment" >
+        <action
+            android:id="@+id/action_addWalletFragment_to_walletFragment"
+            app:destination="@id/wallet_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/exchange_fragment"
+        android:name="com.dsd.tmsgraduationproject.fragments.ExchangeFragment"
+        android:label="@string/fragment_exchange" />
 </navigation>
