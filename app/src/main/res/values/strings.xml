@@ -13,6 +13,7 @@
 
     <string name="top_wallet"> Ваши кошельки</string>
     <string name="top_operation"> Ваши операции с кошельками</string>
+    <string name="top_rate"> Курс валют по НБРБ на дату:</string>
     <string name="add_wallet"> Добавить кошелек</string>
     <string name="add_operation"> Добавить операцию</string>
     <string name="sum"> Введите сумму</string>
