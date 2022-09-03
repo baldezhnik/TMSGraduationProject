@@ -7,9 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "wallet_table")
 data class WalletEntity(
     @PrimaryKey(autoGenerate = true) val id: Int,
-    var name: String,
+    @ColumnInfo(name = "name_wallet")var name: String,
     var sum: Float
-) {
-
-
+    ) {
 }

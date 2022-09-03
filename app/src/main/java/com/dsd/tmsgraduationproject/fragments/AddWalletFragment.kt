@@ -43,7 +43,7 @@ class AddWalletFragment : Fragment() {
             if (TextUtils.isEmpty(binding.tvEditNameWallet.text)) {
                 Toast.makeText(
                     context,
-                    R.string.empty_not_saved,
+                    R.string.operation_empty,
                     Toast.LENGTH_LONG
                 ).show()
             } else {

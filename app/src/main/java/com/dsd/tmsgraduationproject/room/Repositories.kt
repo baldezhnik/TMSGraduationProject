@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 
 class Repositories(private val operationDao: OperationDao) {
 
-    val allOperations: Flow<List<OperationEntity>> = operationDao.getAllOperations()
+    val allOperations: Flow<List<OperationTuple>> = operationDao.getAllOperations()
     val allWallets: Flow<List<WalletEntity>> = operationDao.getAllWallets()
 
     @Suppress("RedundantSuspendModifier")
@@ -22,5 +22,10 @@ class Repositories(private val operationDao: OperationDao) {
         operationDao.insertWallet(walletEntity)
     }
 
+   // @Suppress("RedundantSuspendModifier")
+   // @WorkerThread
+     fun checkWallet(id: Int): Boolean {
+        return operationDao.checkWallet(id)
+    }
 
 }

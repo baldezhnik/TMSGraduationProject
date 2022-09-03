@@ -35,24 +35,46 @@ class AddOperationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        var type: String = binding.swOper.textOn.toString()
+        binding.swOper.setOnCheckedChangeListener { compoundButton, isChecked ->
+            if(isChecked){
+                type = binding.swOper.textOn.toString()
+                binding.swOper.text = type
+            }else{
+                type = binding.swOper.textOff.toString()
+                binding.swOper.text = type
+            }
+        }
+
         binding.buttonSave.setOnClickListener {
-            if (TextUtils.isEmpty(binding.tvEditName.text)) {
+            if (TextUtils.isEmpty(binding.tvEditSum.text)
+                && TextUtils.isEmpty(binding.tvEditName.text)
+                && TextUtils.isEmpty(binding.tvWalletId.text) ) {
                 Toast.makeText(
                     context,
-                    R.string.empty_not_saved,
+                    R.string.operation_empty,
                     Toast.LENGTH_LONG
                 ).show()
             } else {
-                val operationEntity = OperationEntity(
-                    0,
-                    binding.tvEditName.text.toString(),
-                    binding.tvEditSum.text.toString().toFloat(),
-                    binding.tvEditTypeId.text.toString().toInt())
-                operationEntity.let { reply ->
-                    roomViewModel.insertOperation(reply)
+                if (/*roomViewModel.checkWallet(binding.tvWalletId.text.toString().toInt())*/true) {
+                    val operationEntity = OperationEntity(
+                        0,
+                        binding.tvEditName.text.toString(),
+                        binding.tvEditSum.text.toString().toFloat(),
+                        type,
+                        binding.tvWalletId.text.toString().toInt()
+                    )
+                    operationEntity.let { reply ->
+                        roomViewModel.insertOperation(reply)
+                    }
+                    findNavController().navigate(R.id.action_addOperationFragment_to_operationFragment)
+                }else{
+                    Toast.makeText(
+                        context,
+                        R.string.wallet_empty,
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
-                findNavController().navigate(R.id.action_addOperationFragment_to_operationFragment)
-
             }
         }
     }

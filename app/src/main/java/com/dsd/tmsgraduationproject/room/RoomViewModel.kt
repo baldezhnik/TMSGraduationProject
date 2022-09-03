@@ -3,11 +3,11 @@ package com.dsd.tmsgraduationproject.room
 import androidx.lifecycle.*
 import com.dsd.tmsgraduationproject.room.entities.OperationEntity
 import com.dsd.tmsgraduationproject.room.entities.WalletEntity
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 class RoomViewModel(private val repository: Repositories) : ViewModel()  {
 
-    val allOperations: LiveData<List<OperationEntity>> = repository.allOperations.asLiveData()
+    val allOperations: LiveData<List<OperationTuple>> = repository.allOperations.asLiveData()
     val allWallets: LiveData<List<WalletEntity>> = repository.allWallets.asLiveData()
 
     fun insertOperation(operationEntity: OperationEntity) = viewModelScope.launch {
@@ -17,6 +17,10 @@ class RoomViewModel(private val repository: Repositories) : ViewModel()  {
     fun insertWallet(walletEntity: WalletEntity) = viewModelScope.launch {
         repository.insertWallet(walletEntity)
     }
+
+    fun checkWallet(id: Int):Boolean =
+        repository.checkWallet(id)
+
 }
 
 class RoomViewModelFactory(private val repository: Repositories) : ViewModelProvider.Factory {

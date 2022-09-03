@@ -11,8 +11,12 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface OperationDao {
 
-    @Query("SELECT * FROM operation_table ORDER BY id DESC")
-    fun getAllOperations(): Flow<MutableList<OperationEntity>>
+    @Query("SELECT operation_table.id as id, operation_table.type_id, operation_table.name," +
+            " operation_table.sum, wallet_table.name_wallet FROM operation_table " +
+            "LEFT JOIN wallet_table " +
+            "ON operation_table.id_wallet = wallet_table.id" +
+            " ORDER BY id DESC")
+    fun getAllOperations(): Flow<MutableList<OperationTuple>>
 
     @Insert
     suspend fun insertOperation(operationEntity: OperationEntity)
@@ -28,4 +32,10 @@ interface OperationDao {
 
     @Insert
     suspend fun insertWallet(walletEntity: WalletEntity)
+
+    @Query("DELETE FROM wallet_table")
+    suspend fun deleteAllWallets()
+
+    @Query("SELECT EXISTS(SELECT * FROM wallet_table WHERE id = :id)")
+    fun checkWallet(id : Int): Boolean
 }

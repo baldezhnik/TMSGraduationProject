@@ -25,15 +25,25 @@
         android:layout_margin="@dimen/big_padding"
         android:textSize="18sp" />
     <EditText
-        android:id="@+id/tv_edit_type_id"
+        android:id="@+id/tv_wallet_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="@dimen/min_height"
         android:fontFamily="sans-serif-light"
-        android:hint="type_id"
+        android:hint="wallet_id"
         android:inputType="number"
         android:layout_margin="@dimen/big_padding"
         android:textSize="18sp" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/sw_oper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:layout_margin="@dimen/big_padding"
+        android:textOff="@string/reception"
+        android:textOn="@string/spending"
+        android:text="@string/spending"/>
 
     <Button
         android:id="@+id/button_save"
@@ -43,5 +53,7 @@
         android:text="@string/button_save"
         android:layout_margin="@dimen/big_padding"
         android:textColor="@color/buttonLabel" />
+
+
 
 </LinearLayout>

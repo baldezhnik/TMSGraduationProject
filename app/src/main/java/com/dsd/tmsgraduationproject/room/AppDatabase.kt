@@ -34,6 +34,7 @@ abstract class AppDatabase: RoomDatabase() {
 
                     // Delete all content here.
                     operationDao.deleteAllOperations()
+                    operationDao.deleteAllWallets()
 
 //                    // Add sample words.
 //                    var word = SegmentType.Word("Hello")
