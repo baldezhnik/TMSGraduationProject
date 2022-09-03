@@ -27,10 +27,9 @@ class ExchangeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(ExchangeViewModel::class.java)
-
-        viewModel.getAllMovie()
-        viewModel.moviesLiveData.observe(viewLifecycleOwner){
-            Log.e("RET", it.joinToString())
+        viewModel.getAllRates()
+        viewModel.ratesLiveData.observe(viewLifecycleOwner){
+            binding.tvCours.text = it.toString()
         }
     }
 

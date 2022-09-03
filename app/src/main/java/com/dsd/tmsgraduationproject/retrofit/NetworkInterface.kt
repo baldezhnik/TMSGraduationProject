@@ -7,11 +7,11 @@ import retrofit2.create
 import retrofit2.http.GET
 
 interface NetworkInterface {
-    @GET("movielist.json")
-    suspend fun getAllMovies() : Response<List<Movie>>
+    @GET("rates?periodicity=0")
+    suspend fun getAllMovies() : Response<Rate>
     companion object {
         var retrofitService: NetworkInterface? = null
-        private val BASE_URL = "https://howtodoandroid.com/"
+        private val BASE_URL = "https://www.nbrb.by/api/exrates/"
         fun getInstance() : NetworkInterface{
             if (retrofitService==null) {
                 val retrofit = Retrofit.Builder()

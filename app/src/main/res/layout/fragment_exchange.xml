@@ -5,24 +5,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="@dimen/min_height"
-        android:fontFamily="sans-serif-light"
-        android:layout_margin="@dimen/big_padding"
-        android:textSize="18sp"
-        android:text="Курсы валют" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="@dimen/min_height"
-        android:fontFamily="sans-serif-light"
-        android:layout_margin="@dimen/big_padding"
-        android:textSize="18sp"
-        android:text="Курсы валют" />
-
-    <TextView
+        android:id="@+id/tv_cours"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="@dimen/min_height"

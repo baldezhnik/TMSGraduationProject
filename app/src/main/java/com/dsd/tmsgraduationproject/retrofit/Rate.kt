@@ -1,3 +1,5 @@
 package com.dsd.tmsgraduationproject.retrofit
 
-class DataItem : ArrayList<Movie>()
+class Rate : ArrayList<RateItem>(){
+
+}
