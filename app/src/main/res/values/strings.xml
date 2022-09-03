@@ -21,4 +21,8 @@
     <string name="spending"> Трата</string>
     <string name="reception"> Получение</string>
 
+    <string name="channel_name">ChannelNotificationDSD</string>
+    <string name="channel_description">ChannelDescriptionDSD</string>
+    <string name="notification_title">Налоговая</string>
+    <string name="notification_text">Не забудь отчитаться о бюджете</string>
 </resources>

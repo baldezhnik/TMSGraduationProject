@@ -1,14 +1,12 @@
 package com.dsd.tmsgraduationproject
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.dsd.tmsgraduationproject.databinding.ActivityMainBinding
-import com.dsd.tmsgraduationproject.room.Repositories
+import com.dsd.tmsgraduationproject.notification.Notification
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -27,5 +25,12 @@ class MainActivity : AppCompatActivity() {
         ))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navBottom.setupWithNavController(navController)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val notification = Notification(this)
+        notification.createNotificationChannel()
+        notification.showNotification()
     }
 }
