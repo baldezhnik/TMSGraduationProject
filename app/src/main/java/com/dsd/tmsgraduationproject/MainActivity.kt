@@ -6,8 +6,12 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.dsd.tmsgraduationproject.notification.Notification
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
+import androidx.work.WorkRequest
+import com.dsd.tmsgraduationproject.workmanager.MyWorker
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,8 +33,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        val notification = Notification(this)
-        notification.createNotificationChannel()
-        notification.showNotification()
+
+        val notificationWorker: WorkRequest =
+            PeriodicWorkRequestBuilder<MyWorker>(15, TimeUnit.MINUTES)
+                .build()
+
+        WorkManager
+            .getInstance(this)
+            .enqueue(notificationWorker)
     }
 }
