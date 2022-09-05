@@ -1,9 +1,6 @@
 package com.dsd.tmsgraduationproject.room
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.dsd.tmsgraduationproject.room.entities.OperationEntity
 import com.dsd.tmsgraduationproject.room.entities.WalletEntity
 import kotlinx.coroutines.flow.Flow
@@ -18,8 +15,14 @@ interface OperationDao {
             " ORDER BY id DESC")
     fun getAllOperations(): Flow<MutableList<OperationTuple>>
 
+    @Query("SELECT * FROM operation_table WHERE id = :id")
+    suspend fun getOperation(id : Long): OperationEntity
+
     @Insert
     suspend fun insertOperation(operationEntity: OperationEntity)
+
+    @Update
+    suspend fun updateOperation(operationEntity: OperationEntity)
 
     @Delete
     suspend fun deleteOperation(operationEntity: OperationEntity)
@@ -37,5 +40,5 @@ interface OperationDao {
     suspend fun deleteAllWallets()
 
     @Query("SELECT EXISTS(SELECT * FROM wallet_table WHERE id = :id)")
-    fun checkWallet(id : Int): Boolean
+    suspend fun checkWallet(id : Int): Boolean
 }

@@ -54,7 +54,7 @@ class AddWalletFragment : Fragment() {
                 walletEntity.let { reply ->
                     roomViewModel.insertWallet(reply)
                 }
-                findNavController().navigate(R.id.action_addWalletFragment_to_walletFragment)
+                findNavController().popBackStack()
 
             }
         }

@@ -46,14 +46,35 @@
         android:text="@string/spending"/>
 
     <Button
-        android:id="@+id/button_save"
+        android:id="@+id/button_update"
+        android:enabled="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        android:text="@string/button_save"
+        android:text="@string/button_update"
         android:layout_margin="@dimen/big_padding"
         android:textColor="@color/buttonLabel" />
 
+    <Button
+        android:id="@+id/button_delete"
+        android:enabled="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="@string/button_delete"
+        android:layout_margin="@dimen/big_padding"
+        android:textColor="@color/buttonLabel" />
 
+    <EditText
+        android:id="@+id/tv_download"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/min_height"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/id_wallet"
+        android:inputType="number"
+        android:layout_margin="@dimen/big_padding"
+        android:textSize="24sp" />
 
 </LinearLayout>

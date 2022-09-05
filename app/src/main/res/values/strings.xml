@@ -2,6 +2,8 @@
     <string name="app_name">TMSGraduationProject</string>
     <string name="hint_word">Word dot</string>
     <string name="button_save">Сохранить</string>
+    <string name="button_update">Внести изменения</string>
+    <string name="button_delete">Удалить</string>
     <string name="operation_empty">Не заполнены все поля.</string>
     <string name="wallet_empty">Кошелек с таким ID отсутсвует.</string>
     <string name="add_word">Add word</string>
@@ -18,9 +20,10 @@
     <string name="add_operation"> Добавить операцию</string>
     <string name="sum"> Введите сумму</string>
     <string name="name"> Введите описание</string>
+    <string name="id_wallet"> Введите id кошелька</string>
     <string name="spending"> Трата</string>
     <string name="reception"> Получение</string>
-
+    <string name="download"> Загрузка</string>
     <string name="channel_name">ChannelNotificationDSD</string>
     <string name="channel_description">ChannelDescriptionDSD</string>
     <string name="notification_title">Налоговая</string>

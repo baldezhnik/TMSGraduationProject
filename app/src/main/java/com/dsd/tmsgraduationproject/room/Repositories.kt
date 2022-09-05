@@ -12,8 +12,26 @@ class Repositories(private val operationDao: OperationDao) {
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
+    suspend fun getOperation(int: Long): OperationEntity {
+        return operationDao.getOperation(int)
+    }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
     suspend fun insertOperation(operationEntity: OperationEntity) {
         operationDao.insertOperation(operationEntity)
+    }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun updateOperation(operationEntity: OperationEntity) {
+        operationDao.updateOperation(operationEntity)
+    }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun deleteOperation(operationEntity: OperationEntity) {
+        operationDao.deleteOperation(operationEntity)
     }
 
     @Suppress("RedundantSuspendModifier")
@@ -22,9 +40,9 @@ class Repositories(private val operationDao: OperationDao) {
         operationDao.insertWallet(walletEntity)
     }
 
-   // @Suppress("RedundantSuspendModifier")
-   // @WorkerThread
-     fun checkWallet(id: Int): Boolean {
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+     suspend fun checkWallet(id: Int): Boolean {
         return operationDao.checkWallet(id)
     }
 

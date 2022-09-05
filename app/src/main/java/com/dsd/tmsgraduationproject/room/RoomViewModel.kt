@@ -10,8 +10,20 @@ class RoomViewModel(private val repository: Repositories) : ViewModel()  {
     val allOperations: LiveData<List<OperationTuple>> = repository.allOperations.asLiveData()
     val allWallets: LiveData<List<WalletEntity>> = repository.allWallets.asLiveData()
 
+    suspend fun getOperation(id: Long):OperationEntity {
+         return repository.getOperation(id)
+    }
+
     fun insertOperation(operationEntity: OperationEntity) = viewModelScope.launch {
         repository.insertOperation(operationEntity)
+    }
+
+    fun updateOperation(operationEntity: OperationEntity) = viewModelScope.launch {
+        repository.updateOperation(operationEntity)
+    }
+
+    fun deleteOperation(operationEntity: OperationEntity) = viewModelScope.launch {
+        repository.deleteOperation(operationEntity)
     }
 
     fun insertWallet(walletEntity: WalletEntity) = viewModelScope.launch {
@@ -19,9 +31,10 @@ class RoomViewModel(private val repository: Repositories) : ViewModel()  {
     }
 
     fun checkWallet(id: Int):Boolean {
-       return repository.checkWallet(id)
+        val bol: Boolean
+        runBlocking { bol = repository.checkWallet(id) }
+        return bol
     }
-
 }
 
 class RoomViewModelFactory(private val repository: Repositories) : ViewModelProvider.Factory {
