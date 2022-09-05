@@ -1,9 +1,6 @@
 package com.dsd.tmsgraduationproject.room
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.dsd.tmsgraduationproject.room.entities.OperationEntity
 import com.dsd.tmsgraduationproject.room.entities.WalletEntity
 import kotlinx.coroutines.flow.Flow
@@ -18,8 +15,14 @@ interface OperationDao {
             " ORDER BY id DESC")
     fun getAllOperations(): Flow<MutableList<OperationTuple>>
 
+    @Query("SELECT * FROM operation_table WHERE id = :id")
+    suspend fun getOperation(id : Long): OperationEntity
+
     @Insert
     suspend fun insertOperation(operationEntity: OperationEntity)
+
+    @Update
+    suspend fun updateOperation(operationEntity: OperationEntity)
 
     @Delete
     suspend fun deleteOperation(operationEntity: OperationEntity)
@@ -30,12 +33,38 @@ interface OperationDao {
     @Query("SELECT * FROM wallet_table ORDER BY id")
     fun getAllWallets(): Flow<MutableList<WalletEntity>>
 
+    @Query("SELECT * FROM wallet_table WHERE id = :id")
+    suspend fun getWallet(id : Int): WalletEntity
+
     @Insert
     suspend fun insertWallet(walletEntity: WalletEntity)
+
+    @Update
+    suspend fun updateWallet(walletEntity: WalletEntity)
+
+    @Query("UPDATE wallet_table SET sum=sum+:sum where id=:walletid")
+    suspend fun plusWallet(walletid: Int, sum:Float)
+
+    @Query("UPDATE wallet_table SET sum=sum-:sum where id=:walletid")
+    fun minusWallet(walletid: Int, sum:Float)
+
+    @Delete
+    suspend fun deleteWallet(walletEntity: WalletEntity)
 
     @Query("DELETE FROM wallet_table")
     suspend fun deleteAllWallets()
 
     @Query("SELECT EXISTS(SELECT * FROM wallet_table WHERE id = :id)")
-    fun checkWallet(id : Int): Boolean
+    suspend fun checkWallet(id : Int): Boolean
+
+    @Transaction
+    suspend fun plusOperationWithWallet(operationEntity: OperationEntity, walletid: Int, sum: Float){
+        insertOperation(operationEntity)
+        plusWallet(walletid,sum)
+    }
+    @Transaction
+    suspend fun insertOperationMinus(operationEntity: OperationEntity, walletid: Int, sum: Float){
+        insertOperation(operationEntity)
+        minusWallet(walletid,sum)
+    }
 }

@@ -9,5 +9,4 @@ data class WalletEntity(
     @PrimaryKey(autoGenerate = true) val id: Int,
     @ColumnInfo(name = "name_wallet")var name: String,
     var sum: Float
-    ) {
-}
+    )

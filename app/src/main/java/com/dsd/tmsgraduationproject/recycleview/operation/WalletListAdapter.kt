@@ -2,10 +2,14 @@ package com.dsd.tmsgraduationproject.recycleview.operation
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.dsd.tmsgraduationproject.R
 import com.dsd.tmsgraduationproject.databinding.ItemWalletBinding
+import com.dsd.tmsgraduationproject.fragments.UpdateWalletFragment
 import com.dsd.tmsgraduationproject.room.entities.WalletEntity
 
 class WalletListAdapter: ListAdapter<WalletEntity, WalletListAdapter.WalletViewHolder>(WalletsComparator())  {
@@ -13,7 +17,7 @@ class WalletListAdapter: ListAdapter<WalletEntity, WalletListAdapter.WalletViewH
         return WalletViewHolder.create(parent)
     }
 
-    override fun onBindViewHolder(holder: WalletListAdapter.WalletViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: WalletViewHolder, position: Int) {
         val current = getItem(position)
         holder.bind(current)
     }
@@ -24,15 +28,21 @@ class WalletListAdapter: ListAdapter<WalletEntity, WalletListAdapter.WalletViewH
                 tvIdWallet.text = walletEntity.id.toString()
                 tvNameWallet.text = walletEntity.name
                 tvSumWallet.text = walletEntity.sum.toString()
+                layout.setOnClickListener {
+                    itemView.findNavController().navigate(
+                        R.id.action_wallet_fragment_to_updateWalletFragment,
+                        bundleOf(UpdateWalletFragment.WALLET_ID to walletEntity.id)
+                    )
+                }
             }
         }
 
         companion object {
-            fun create(parent: ViewGroup): WalletListAdapter.WalletViewHolder {
+            fun create(parent: ViewGroup): WalletViewHolder {
                 val itemBinding = ItemWalletBinding.inflate(
                     LayoutInflater
                     .from(parent.context), parent, false)
-                return WalletListAdapter.WalletViewHolder(itemBinding)
+                return WalletViewHolder(itemBinding)
             }
         }
     }

@@ -16,6 +16,7 @@ import com.dsd.tmsgraduationproject.room.RoomViewModel
 import com.dsd.tmsgraduationproject.room.RoomViewModelFactory
 import com.dsd.tmsgraduationproject.room.entities.OperationEntity
 
+
 class AddOperationFragment : Fragment() {
     private val roomViewModel: RoomViewModel by viewModels {
         RoomViewModelFactory((activity?.application as OperationsApplication).repository)
@@ -36,7 +37,7 @@ class AddOperationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         var type: String = binding.swOper.textOn.toString()
-        binding.swOper.setOnCheckedChangeListener { compoundButton, isChecked ->
+        binding.swOper.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked){
                 type = binding.swOper.textOn.toString()
                 binding.swOper.text = type
@@ -45,7 +46,7 @@ class AddOperationFragment : Fragment() {
                 binding.swOper.text = type
             }
         }
-//binding.tvWalletId.text.toString().toInt()
+
         binding.buttonSave.setOnClickListener {
             if (TextUtils.isEmpty(binding.tvEditSum.text)
                 && TextUtils.isEmpty(binding.tvEditName.text)
@@ -56,7 +57,7 @@ class AddOperationFragment : Fragment() {
                     Toast.LENGTH_LONG
                 ).show()
             } else {
-                if (true) {
+                if (roomViewModel.checkWallet(binding.tvWalletId.text.toString().toInt())) {
                     val operationEntity = OperationEntity(
                         0,
                         binding.tvEditName.text.toString(),
@@ -64,11 +65,26 @@ class AddOperationFragment : Fragment() {
                         type,
                         binding.tvWalletId.text.toString().toInt()
                     )
-                  //  val i: Boolean = roomViewModel.checkWallet(binding.tvWalletId.text.toString().toInt())
                     operationEntity.let { reply ->
-                        roomViewModel.insertOperation(reply)
+                        when(type) {
+                            binding.swOper.textOff.toString() ->  roomViewModel.plusOperationWithWallet(
+                                reply,
+                                binding.tvWalletId.text.toString().toInt(),
+                                binding.tvEditSum.text.toString().toFloat()
+                            )
+                            binding.swOper.textOn.toString() ->roomViewModel.insertOperationMinus(
+                                reply,
+                                binding.tvWalletId.text.toString().toInt(),
+                                binding.tvEditSum.text.toString().toFloat()
+                            )
+                            else -> {Toast.makeText(
+                                context,
+                                "что то пошло не так",
+                                Toast.LENGTH_LONG
+                            ).show()}
+                        }
                     }
-                    findNavController().navigate(R.id.action_addOperationFragment_to_operationFragment)
+                    findNavController().popBackStack()
                 }else{
                     Toast.makeText(
                         context,
@@ -84,4 +100,5 @@ class AddOperationFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }

@@ -13,15 +13,14 @@
         <action
             android:id="@+id/action_operationFragment_to_addOperationFragment"
             app:destination="@id/addOperationFragment" />
+        <action
+            android:id="@+id/action_operation_fragment_to_updateOperationFragment"
+            app:destination="@id/updateOperationFragment" />
     </fragment>
     <fragment
         android:id="@+id/addOperationFragment"
         android:name="com.dsd.tmsgraduationproject.fragments.AddOperationFragment"
-        android:label="AddOperationFragment" >
-        <action
-            android:id="@+id/action_addOperationFragment_to_operationFragment"
-            app:destination="@id/operation_fragment" />
-    </fragment>
+        android:label="AddOperationFragment" />
     <fragment
         android:id="@+id/wallet_fragment"
         android:name="com.dsd.tmsgraduationproject.fragments.WalletFragment"
@@ -30,17 +29,25 @@
         <action
             android:id="@+id/action_walletFragment_to_addWalletFragment"
             app:destination="@id/addWalletFragment" />
+        <action
+            android:id="@+id/action_wallet_fragment_to_updateWalletFragment"
+            app:destination="@id/updateWalletFragment" />
     </fragment>
     <fragment
         android:id="@+id/addWalletFragment"
         android:name="com.dsd.tmsgraduationproject.fragments.AddWalletFragment"
         android:label="AddWalletFragment" >
-        <action
-            android:id="@+id/action_addWalletFragment_to_walletFragment"
-            app:destination="@id/wallet_fragment" />
     </fragment>
     <fragment
         android:id="@+id/exchange_fragment"
         android:name="com.dsd.tmsgraduationproject.fragments.ExchangeFragment"
         android:label="@string/fragment_exchange" />
+    <fragment
+        android:id="@+id/updateOperationFragment"
+        android:name="com.dsd.tmsgraduationproject.fragments.UpdateOperationFragment"
+        android:label="UpdateOperationFragment" />
+    <fragment
+        android:id="@+id/updateWalletFragment"
+        android:name="com.dsd.tmsgraduationproject.fragments.UpdateWalletFragment"
+        android:label="UpdateWalletFragment" />
 </navigation>

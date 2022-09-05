@@ -1,7 +1,6 @@
 package com.dsd.tmsgraduationproject.room
 
 import android.content.Context
-import androidx.compose.ui.text.android.animation.SegmentType
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -30,17 +29,9 @@ abstract class AppDatabase: RoomDatabase() {
             super.onCreate(db)
             INSTANCE?.let { database ->
                 scope.launch {
-                    var operationDao = database.getOperationDao()
-
-                    // Delete all content here.
+                    val operationDao = database.getOperationDao()
                     operationDao.deleteAllOperations()
                     operationDao.deleteAllWallets()
-
-//                    // Add sample words.
-//                    var word = SegmentType.Word("Hello")
-//                    operationDao.insert(word)
-//                    word = Word("World!")
-//                    operationDao.insert(word)
                 }
             }
         }

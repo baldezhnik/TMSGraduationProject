@@ -9,5 +9,4 @@ data class OperationTuple(
     var sum: Float,
     @ColumnInfo(name = "name_wallet")var nameWallet: String,
 
-) {
-}
+)

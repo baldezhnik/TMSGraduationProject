@@ -27,7 +27,7 @@ class ExchangeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ExchangeViewModel::class.java)
+        viewModel = ViewModelProvider(this)[ExchangeViewModel::class.java]
 
         val adapter = RateListAdapter()
         binding.rvRateList.adapter = adapter

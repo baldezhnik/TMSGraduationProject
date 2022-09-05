@@ -10,13 +10,10 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.dsd.tmsgraduationproject.R
-import com.dsd.tmsgraduationproject.databinding.FragmentAddOperationBinding
 import com.dsd.tmsgraduationproject.databinding.FragmentAddWalletBinding
-import com.dsd.tmsgraduationproject.databinding.FragmentWalletBinding
 import com.dsd.tmsgraduationproject.room.OperationsApplication
 import com.dsd.tmsgraduationproject.room.RoomViewModel
 import com.dsd.tmsgraduationproject.room.RoomViewModelFactory
-import com.dsd.tmsgraduationproject.room.entities.OperationEntity
 import com.dsd.tmsgraduationproject.room.entities.WalletEntity
 
 class AddWalletFragment : Fragment() {
@@ -54,7 +51,7 @@ class AddWalletFragment : Fragment() {
                 walletEntity.let { reply ->
                     roomViewModel.insertWallet(reply)
                 }
-                findNavController().navigate(R.id.action_addWalletFragment_to_walletFragment)
+                findNavController().popBackStack()
 
             }
         }

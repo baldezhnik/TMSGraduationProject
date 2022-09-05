@@ -2,12 +2,15 @@ package com.dsd.tmsgraduationproject.recycleview.operation
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.dsd.tmsgraduationproject.R
 import com.dsd.tmsgraduationproject.databinding.ItemOperationBinding
+import com.dsd.tmsgraduationproject.fragments.UpdateOperationFragment
 import com.dsd.tmsgraduationproject.room.OperationTuple
-import com.dsd.tmsgraduationproject.room.entities.OperationEntity
 
 class OperationListAdapter: ListAdapter<OperationTuple, OperationListAdapter.OperationViewHolder>(OperationsComparator())  {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OperationViewHolder {
@@ -27,6 +30,12 @@ class OperationListAdapter: ListAdapter<OperationTuple, OperationListAdapter.Ope
                 tvName.text = operationTuple.name
                 tvSum.text = operationTuple.sum.toString()
                 tvWalletName.text = operationTuple.nameWallet
+                layout.setOnClickListener {
+                    itemView.findNavController().navigate(
+                        R.id.action_operation_fragment_to_updateOperationFragment,
+                        bundleOf(UpdateOperationFragment.OPERATION_ID to operationTuple.id)
+                    )
+                }
             }
         }
 

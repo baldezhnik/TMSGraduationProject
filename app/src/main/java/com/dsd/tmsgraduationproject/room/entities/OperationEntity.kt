@@ -1,12 +1,12 @@
 package com.dsd.tmsgraduationproject.room.entities
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.PrimaryKey
+import androidx.room.*
 
 @Entity (
     tableName = "operation_table",
+   // indices = [
+   //     Index("id_wallet")
+   //           ],
     foreignKeys = [
         ForeignKey(
             entity = WalletEntity::class,
@@ -23,5 +23,4 @@ import androidx.room.PrimaryKey
     var sum: Float,
     @ColumnInfo(name="type_id") var type: String,
     @ColumnInfo(name="id_wallet") val idWallet: Int
-    ) {
-}
+    )

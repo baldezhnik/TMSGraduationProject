@@ -10,16 +10,52 @@ class RoomViewModel(private val repository: Repositories) : ViewModel()  {
     val allOperations: LiveData<List<OperationTuple>> = repository.allOperations.asLiveData()
     val allWallets: LiveData<List<WalletEntity>> = repository.allWallets.asLiveData()
 
-    fun insertOperation(operationEntity: OperationEntity) = viewModelScope.launch {
-        repository.insertOperation(operationEntity)
+    suspend fun getOperation(id: Long):OperationEntity {
+         return repository.getOperation(id)
+    }
+
+  //  fun insertOperation(operationEntity: OperationEntity) = viewModelScope.launch {
+  //      repository.insertOperation(operationEntity)
+  //  }
+
+    fun updateOperation(operationEntity: OperationEntity) = viewModelScope.launch {
+        repository.updateOperation(operationEntity)
+    }
+
+    fun deleteOperation(operationEntity: OperationEntity) = viewModelScope.launch {
+        repository.deleteOperation(operationEntity)
+    }
+
+    suspend fun getWallet(id: Int):WalletEntity {
+        return repository.getWallet(id)
     }
 
     fun insertWallet(walletEntity: WalletEntity) = viewModelScope.launch {
         repository.insertWallet(walletEntity)
     }
 
+    fun updateWallet(walletEntity: WalletEntity) = viewModelScope.launch {
+        repository.updateWallet(walletEntity)
+    }
+
+    fun deleteWallet(walletEntity: WalletEntity) = viewModelScope.launch {
+        repository.deleteWallet(walletEntity)
+    }
+
     fun checkWallet(id: Int):Boolean {
-       return repository.checkWallet(id)
+        val bol: Boolean
+        runBlocking { bol = repository.checkWallet(id) }
+        return bol
+    }
+
+    fun plusOperationWithWallet(operationEntity: OperationEntity, walletid: Int, sum: Float)
+        = viewModelScope.launch(Dispatchers.IO) {
+        repository.plusOperationWithWallet(operationEntity, walletid, sum)
+    }
+
+    fun insertOperationMinus(operationEntity: OperationEntity, walletid: Int, sum: Float)
+         = viewModelScope.launch(Dispatchers.IO) {
+        repository.insertOperationMinus(operationEntity, walletid, sum)
     }
 
 }
