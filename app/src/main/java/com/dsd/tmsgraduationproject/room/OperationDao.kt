@@ -33,8 +33,17 @@ interface OperationDao {
     @Query("SELECT * FROM wallet_table ORDER BY id")
     fun getAllWallets(): Flow<MutableList<WalletEntity>>
 
+    @Query("SELECT * FROM wallet_table WHERE id = :id")
+    suspend fun getWallet(id : Int): WalletEntity
+
     @Insert
     suspend fun insertWallet(walletEntity: WalletEntity)
+
+    @Update
+    suspend fun updateWallet(walletEntity: WalletEntity)
+
+    @Delete
+    suspend fun deleteWallet(walletEntity: WalletEntity)
 
     @Query("DELETE FROM wallet_table")
     suspend fun deleteAllWallets()

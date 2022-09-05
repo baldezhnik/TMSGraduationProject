@@ -36,8 +36,25 @@ class Repositories(private val operationDao: OperationDao) {
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
+    suspend fun getWallet(int: Int): WalletEntity {
+        return operationDao.getWallet(int)
+    }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
     suspend fun insertWallet(walletEntity: WalletEntity) {
         operationDao.insertWallet(walletEntity)
+    }
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun updateWallet(walletEntity: WalletEntity) {
+        operationDao.updateWallet(walletEntity)
+    }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun deleteWallet(walletEntity: WalletEntity) {
+        operationDao.deleteWallet(walletEntity)
     }
 
     @Suppress("RedundantSuspendModifier")

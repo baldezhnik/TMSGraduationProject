@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_walletFragment_to_addWalletFragment"
             app:destination="@id/addWalletFragment" />
+        <action
+            android:id="@+id/action_wallet_fragment_to_updateWalletFragment"
+            app:destination="@id/updateWalletFragment" />
     </fragment>
     <fragment
         android:id="@+id/addWalletFragment"
@@ -43,4 +46,8 @@
         android:id="@+id/updateOperationFragment"
         android:name="com.dsd.tmsgraduationproject.fragments.UpdateOperationFragment"
         android:label="UpdateOperationFragment" />
+    <fragment
+        android:id="@+id/updateWalletFragment"
+        android:name="com.dsd.tmsgraduationproject.fragments.UpdateWalletFragment"
+        android:label="UpdateWalletFragment" />
 </navigation>

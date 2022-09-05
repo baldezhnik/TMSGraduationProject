@@ -26,8 +26,20 @@ class RoomViewModel(private val repository: Repositories) : ViewModel()  {
         repository.deleteOperation(operationEntity)
     }
 
+    suspend fun getWallet(id: Int):WalletEntity {
+        return repository.getWallet(id)
+    }
+
     fun insertWallet(walletEntity: WalletEntity) = viewModelScope.launch {
         repository.insertWallet(walletEntity)
+    }
+
+    fun updateWallet(walletEntity: WalletEntity) = viewModelScope.launch {
+        repository.updateWallet(walletEntity)
+    }
+
+    fun deleteWallet(walletEntity: WalletEntity) = viewModelScope.launch {
+        repository.deleteWallet(walletEntity)
     }
 
     fun checkWallet(id: Int):Boolean {

@@ -9,9 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dsd.tmsgraduationproject.R
-import com.dsd.tmsgraduationproject.databinding.FragmentOperationBinding
 import com.dsd.tmsgraduationproject.databinding.FragmentWalletBinding
-import com.dsd.tmsgraduationproject.recycleview.operation.OperationListAdapter
 import com.dsd.tmsgraduationproject.recycleview.operation.WalletListAdapter
 import com.dsd.tmsgraduationproject.room.OperationsApplication
 import com.dsd.tmsgraduationproject.room.RoomViewModel
