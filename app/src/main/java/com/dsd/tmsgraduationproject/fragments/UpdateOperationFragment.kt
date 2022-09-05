@@ -26,7 +26,6 @@ class UpdateOperationFragment : Fragment() {
     }
 
     private  lateinit var operationEntity:OperationEntity
-    private val scope = CoroutineScope(Job() + Dispatchers.IO)
     private val roomViewModel: RoomViewModel by viewModels {
         RoomViewModelFactory((activity?.application as OperationsApplication).repository)
     }
@@ -49,7 +48,7 @@ class UpdateOperationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         getOperationEntity()
         type = binding.swOper.textOn.toString()
-        binding.swOper.setOnCheckedChangeListener { compoundButton, isChecked ->
+        binding.swOper.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked){
                 type = binding.swOper.textOn.toString()
                 binding.swOper.text = type

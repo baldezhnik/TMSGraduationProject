@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.dsd.tmsgraduationproject.R
 import com.dsd.tmsgraduationproject.databinding.ItemWalletBinding
-import com.dsd.tmsgraduationproject.fragments.UpdateOperationFragment
 import com.dsd.tmsgraduationproject.fragments.UpdateWalletFragment
 import com.dsd.tmsgraduationproject.room.entities.WalletEntity
 
@@ -18,7 +17,7 @@ class WalletListAdapter: ListAdapter<WalletEntity, WalletListAdapter.WalletViewH
         return WalletViewHolder.create(parent)
     }
 
-    override fun onBindViewHolder(holder: WalletListAdapter.WalletViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: WalletViewHolder, position: Int) {
         val current = getItem(position)
         holder.bind(current)
     }
@@ -39,11 +38,11 @@ class WalletListAdapter: ListAdapter<WalletEntity, WalletListAdapter.WalletViewH
         }
 
         companion object {
-            fun create(parent: ViewGroup): WalletListAdapter.WalletViewHolder {
+            fun create(parent: ViewGroup): WalletViewHolder {
                 val itemBinding = ItemWalletBinding.inflate(
                     LayoutInflater
                     .from(parent.context), parent, false)
-                return WalletListAdapter.WalletViewHolder(itemBinding)
+                return WalletViewHolder(itemBinding)
             }
         }
     }

@@ -23,5 +23,4 @@ import androidx.room.*
     var sum: Float,
     @ColumnInfo(name="type_id") var type: String,
     @ColumnInfo(name="id_wallet") val idWallet: Int
-    ) {
-}
+    )

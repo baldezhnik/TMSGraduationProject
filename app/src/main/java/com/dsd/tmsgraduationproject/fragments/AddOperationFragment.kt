@@ -37,7 +37,7 @@ class AddOperationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         var type: String = binding.swOper.textOn.toString()
-        binding.swOper.setOnCheckedChangeListener { compoundButton, isChecked ->
+        binding.swOper.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked){
                 type = binding.swOper.textOn.toString()
                 binding.swOper.text = type
@@ -84,7 +84,7 @@ class AddOperationFragment : Fragment() {
                             ).show()}
                         }
                     }
-                            findNavController().popBackStack()
+                    findNavController().popBackStack()
                 }else{
                     Toast.makeText(
                         context,

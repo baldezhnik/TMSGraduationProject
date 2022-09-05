@@ -10,8 +10,8 @@ interface NetworkInterface {
     @GET("rates?periodicity=0")
     suspend fun getAllMovies() : Response<Rate>
     companion object {
-        var retrofitService: NetworkInterface? = null
-        private val BASE_URL = "https://www.nbrb.by/api/exrates/"
+        private var retrofitService: NetworkInterface? = null
+        private const val BASE_URL = "https://www.nbrb.by/api/exrates/"
         fun getInstance() : NetworkInterface{
             if (retrofitService==null) {
                 val retrofit = Retrofit.Builder()

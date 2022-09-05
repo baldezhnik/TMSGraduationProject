@@ -50,7 +50,6 @@ class RoomViewModel(private val repository: Repositories) : ViewModel()  {
 
     fun plusOperationWithWallet(operationEntity: OperationEntity, walletid: Int, sum: Float)
         = viewModelScope.launch(Dispatchers.IO) {
-        Thread.sleep(5000)
         repository.plusOperationWithWallet(operationEntity, walletid, sum)
     }
 

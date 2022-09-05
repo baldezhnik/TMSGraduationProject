@@ -1,5 +1,6 @@
 package com.dsd.tmsgraduationproject.recycleview.operation
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -13,12 +14,13 @@ class RateListAdapter: ListAdapter<RateItem, RateListAdapter.RateViewHolder>(Rat
         return RateViewHolder.create(parent)
     }
 
-    override fun onBindViewHolder(holder: RateListAdapter.RateViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RateViewHolder, position: Int) {
         val current = getItem(position)
         holder.bind(current)
     }
 
     class RateViewHolder(private val itemBinding : ItemRateBinding) : RecyclerView.ViewHolder(itemBinding.root) {
+        @SuppressLint("SetTextI18n")
         fun bind(rateItem: RateItem) {
             with(itemBinding){
                 tvCurRate.text = rateItem.Cur_OfficialRate.toString()
@@ -28,11 +30,11 @@ class RateListAdapter: ListAdapter<RateItem, RateListAdapter.RateViewHolder>(Rat
         }
 
         companion object {
-            fun create(parent: ViewGroup): RateListAdapter.RateViewHolder {
+            fun create(parent: ViewGroup): RateViewHolder {
                 val itemBinding = ItemRateBinding.inflate(
                     LayoutInflater
                         .from(parent.context), parent, false)
-                return RateListAdapter.RateViewHolder(itemBinding)
+                return RateViewHolder(itemBinding)
             }
         }
     }

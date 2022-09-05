@@ -28,4 +28,5 @@
     <string name="channel_description">ChannelDescriptionDSD</string>
     <string name="notification_title">Налоговая</string>
     <string name="notification_text">Не забудь отчитаться о бюджете</string>
+    <string name="operation_add">Операция добавлена</string>
 </resources>
