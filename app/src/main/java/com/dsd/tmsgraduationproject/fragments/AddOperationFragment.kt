@@ -16,6 +16,7 @@ import com.dsd.tmsgraduationproject.room.RoomViewModel
 import com.dsd.tmsgraduationproject.room.RoomViewModelFactory
 import com.dsd.tmsgraduationproject.room.entities.OperationEntity
 
+
 class AddOperationFragment : Fragment() {
     private val roomViewModel: RoomViewModel by viewModels {
         RoomViewModelFactory((activity?.application as OperationsApplication).repository)
@@ -83,7 +84,7 @@ class AddOperationFragment : Fragment() {
                             ).show()}
                         }
                     }
-                   // findNavController().popBackStack()
+                            findNavController().popBackStack()
                 }else{
                     Toast.makeText(
                         context,
@@ -99,4 +100,5 @@ class AddOperationFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }

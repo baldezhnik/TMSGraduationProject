@@ -48,11 +48,14 @@ class RoomViewModel(private val repository: Repositories) : ViewModel()  {
         return bol
     }
 
-    fun plusOperationWithWallet(operationEntity: OperationEntity, walletid: Int, sum: Float) = viewModelScope.launch {
+    fun plusOperationWithWallet(operationEntity: OperationEntity, walletid: Int, sum: Float)
+        = viewModelScope.launch(Dispatchers.IO) {
+        Thread.sleep(5000)
         repository.plusOperationWithWallet(operationEntity, walletid, sum)
     }
 
-    fun insertOperationMinus(operationEntity: OperationEntity, walletid: Int, sum: Float) = viewModelScope.launch {
+    fun insertOperationMinus(operationEntity: OperationEntity, walletid: Int, sum: Float)
+         = viewModelScope.launch(Dispatchers.IO) {
         repository.insertOperationMinus(operationEntity, walletid, sum)
     }
 
