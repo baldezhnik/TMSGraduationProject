@@ -42,6 +42,12 @@ interface OperationDao {
     @Update
     suspend fun updateWallet(walletEntity: WalletEntity)
 
+    @Query("UPDATE wallet_table SET sum=sum+:sum where id=:walletid")
+    suspend fun plusWallet(walletid: Int, sum:Float)
+
+    @Query("UPDATE wallet_table SET sum=sum-:sum where id=:walletid")
+    fun minusWallet(walletid: Int, sum:Float)
+
     @Delete
     suspend fun deleteWallet(walletEntity: WalletEntity)
 
@@ -50,4 +56,15 @@ interface OperationDao {
 
     @Query("SELECT EXISTS(SELECT * FROM wallet_table WHERE id = :id)")
     suspend fun checkWallet(id : Int): Boolean
+
+    @Transaction
+    suspend fun plusOperationWithWallet(operationEntity: OperationEntity, walletid: Int, sum: Float){
+        insertOperation(operationEntity)
+        plusWallet(walletid,sum)
+    }
+    @Transaction
+    suspend fun insertOperationMinus(operationEntity: OperationEntity, walletid: Int, sum: Float){
+        insertOperation(operationEntity)
+        minusWallet(walletid,sum)
+    }
 }

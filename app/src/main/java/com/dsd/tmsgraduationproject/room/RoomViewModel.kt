@@ -14,9 +14,9 @@ class RoomViewModel(private val repository: Repositories) : ViewModel()  {
          return repository.getOperation(id)
     }
 
-    fun insertOperation(operationEntity: OperationEntity) = viewModelScope.launch {
-        repository.insertOperation(operationEntity)
-    }
+  //  fun insertOperation(operationEntity: OperationEntity) = viewModelScope.launch {
+  //      repository.insertOperation(operationEntity)
+  //  }
 
     fun updateOperation(operationEntity: OperationEntity) = viewModelScope.launch {
         repository.updateOperation(operationEntity)
@@ -47,6 +47,15 @@ class RoomViewModel(private val repository: Repositories) : ViewModel()  {
         runBlocking { bol = repository.checkWallet(id) }
         return bol
     }
+
+    fun plusOperationWithWallet(operationEntity: OperationEntity, walletid: Int, sum: Float) = viewModelScope.launch {
+        repository.plusOperationWithWallet(operationEntity, walletid, sum)
+    }
+
+    fun insertOperationMinus(operationEntity: OperationEntity, walletid: Int, sum: Float) = viewModelScope.launch {
+        repository.insertOperationMinus(operationEntity, walletid, sum)
+    }
+
 }
 
 class RoomViewModelFactory(private val repository: Repositories) : ViewModelProvider.Factory {

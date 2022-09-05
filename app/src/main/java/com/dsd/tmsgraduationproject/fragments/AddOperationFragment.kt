@@ -65,9 +65,25 @@ class AddOperationFragment : Fragment() {
                         binding.tvWalletId.text.toString().toInt()
                     )
                     operationEntity.let { reply ->
-                        roomViewModel.insertOperation(reply)
+                        when(type) {
+                            binding.swOper.textOff.toString() ->  roomViewModel.plusOperationWithWallet(
+                                reply,
+                                binding.tvWalletId.text.toString().toInt(),
+                                binding.tvEditSum.text.toString().toFloat()
+                            )
+                            binding.swOper.textOn.toString() ->roomViewModel.insertOperationMinus(
+                                reply,
+                                binding.tvWalletId.text.toString().toInt(),
+                                binding.tvEditSum.text.toString().toFloat()
+                            )
+                            else -> {Toast.makeText(
+                                context,
+                                "что то пошло не так",
+                                Toast.LENGTH_LONG
+                            ).show()}
+                        }
                     }
-                    findNavController().popBackStack()
+                   // findNavController().popBackStack()
                 }else{
                     Toast.makeText(
                         context,
